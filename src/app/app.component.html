@@ -7,7 +7,7 @@
   </div>
   <app-certificate-info
     *ngIf="showOrAdd"
-    [certificate]="otherCertificate"
+    [certificate]="chosenCertificate"
   ></app-certificate-info>
-  <app-certificate *ngIf="!showOrAdd"></app-certificate>
+  <app-certificate-upload *ngIf="!showOrAdd"></app-certificate-upload>
 </div>

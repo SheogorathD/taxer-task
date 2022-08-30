@@ -4,7 +4,7 @@
 >
   <div
     class="owner"
-    *ngFor="let certificate of certificateList; let i = index"
+    *ngFor="let certificate of certificateList; trackBy: trackFn; let i = index"
     (click)="getIndex(i)"
   >
     {{ certificate.commonName }}

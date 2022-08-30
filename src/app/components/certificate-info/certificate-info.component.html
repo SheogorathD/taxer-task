@@ -1,5 +1,5 @@
 <div id="certificate-info">
-  <ul>
+  <ul *ngIf="certificate">
     <li>Common Name: {{ certificate.commonName }}</li>
     <li>Issuer CN: {{ certificate.issuerCN }}</li>
     <li>Valid From: {{ certificate.validFrom }}</li>

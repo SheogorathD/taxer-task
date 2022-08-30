@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { CertificateComponent } from './components/certificate/certificate.component';
+import { CertificateUploadComponent } from './components/certificate/certificate-upload.component';
 import { ListComponent } from './components/list/list.component';
 import { CertificateService } from './services/certificate.service';
 import { CertificateInfoComponent } from './components/certificate-info/certificate-info.component';
@@ -12,7 +12,7 @@ import { CertificateInfoComponent } from './components/certificate-info/certific
   imports: [BrowserModule, FormsModule],
   declarations: [
     AppComponent,
-    CertificateComponent,
+    CertificateUploadComponent,
     ListComponent,
     CertificateInfoComponent,
   ],

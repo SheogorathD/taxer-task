@@ -2,8 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
-  Input,
-  OnDestroy,
   OnInit,
   Output,
 } from '@angular/core';
@@ -17,13 +15,9 @@ import { CertificateService } from '../../services/certificate.service';
   styleUrls: ['./list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListComponent implements OnInit, OnDestroy {
+export class ListComponent implements OnInit {
   certificateList$: Observable<Certificate[]>;
-  @Output() newIndex = new EventEmitter();
-
-  getIndex(certificateIndex) {
-    this.newIndex.emit(certificateIndex);
-  }
+  @Output() newIndex = new EventEmitter<number>();
 
   constructor(private readonly certificateService: CertificateService) {}
 
@@ -31,5 +25,11 @@ export class ListComponent implements OnInit, OnDestroy {
     this.certificateList$ = this.certificateService.getCertificateList();
   }
 
-  ngOnDestroy(): void {}
+  getIndex(certificateIndex: number): void {
+    this.newIndex.emit(certificateIndex);
+  }
+
+  trackFn(index: number, item: Certificate): number {
+    return index;
+  }
 }

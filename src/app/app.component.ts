@@ -16,31 +16,23 @@ import { CertificateService } from './services/certificate.service';
 })
 export class AppComponent implements OnInit {
   @Input() index = 0;
-  otherCertificate = [];
+  chosenCertificate: Certificate;
   certificateList$: Observable<Certificate[]>;
-  certificateList = [];
   showOrAdd = true;
-  certificateIndex = 0;
-
-  getIndex(e) {
-    this.index = e;
-    this.otherCertificate = this.certificateService.getCertificate(e);
-  }
-
-  changeAppearance() {
-    this.showOrAdd = !this.showOrAdd;
-  }
 
   constructor(private readonly certificateService: CertificateService) {}
 
-  findCertificate() {
-    this.certificateList$.subscribe((data) => {
-      this.certificateList = data;
-    });
-  }
-
   ngOnInit(): void {
     this.certificateList$ = this.certificateService.getCertificateList();
-    this.otherCertificate = this.certificateService.getCertificate(this.index);
+    this.chosenCertificate = this.certificateService.getCertificate(this.index);
+  }
+
+  getIndex(e: number): void {
+    this.index = e;
+    this.chosenCertificate = this.certificateService.getCertificate(e);
+  }
+
+  changeAppearance(): void {
+    this.showOrAdd = !this.showOrAdd;
   }
 }
