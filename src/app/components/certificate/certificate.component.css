@@ -1,9 +1,9 @@
 #certificate {
   border: 1px solid black;
+  width: 250px;
 }
 
 #file {
   opacity: 0;
-  padding: 15px;
   height: 200px;
 }

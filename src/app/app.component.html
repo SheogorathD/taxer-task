@@ -1,7 +1,10 @@
 <div class="container">
   <div id="nav">
-    <app-list></app-list>
-    <button id="add-document">Додати</button>
+    <app-list [onClick]="getIndex"></app-list>
+    <button id="add-document" (click)="changeAppearance()">
+      {{ showOrAdd ? 'Додати' : 'Скасувати' }}
+    </button>
   </div>
-  <app-certificate></app-certificate>
+  <app-certificate-info *ngIf="showOrAdd"></app-certificate-info>
+  <app-certificate *ngIf="!showOrAdd"></app-certificate>
 </div>

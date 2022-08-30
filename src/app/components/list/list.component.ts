@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  Input,
   OnDestroy,
   OnInit,
 } from '@angular/core';
@@ -16,6 +17,7 @@ import { CertificateService } from '../../services/certificate.service';
 })
 export class ListComponent implements OnInit, OnDestroy {
   certificateList$: Observable<Certificate[]>;
+  @Input() onClick: (certificateIndex) => void;
 
   constructor(private readonly certificateService: CertificateService) {}
 

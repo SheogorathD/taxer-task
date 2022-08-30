@@ -7,7 +7,6 @@ import { Certificate } from '../../models/certificate';
   selector: 'app-certificate',
   templateUrl: './certificate.component.html',
   styleUrls: ['./certificate.component.css'],
-  providers: [CertificateService],
 })
 export class CertificateComponent {
   file: any;

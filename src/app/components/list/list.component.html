@@ -2,7 +2,11 @@
   class="certificate-owners"
   *ngIf="certificateList$ | async as certificateList"
 >
-  <div class="owner" *ngFor="let certificate of certificateList">
+  <div
+    class="owner"
+    *ngFor="let certificate of certificateList; let i = index"
+    (click)="onClick(i)"
+  >
     {{ certificate.commonName }}
   </div>
 </div>

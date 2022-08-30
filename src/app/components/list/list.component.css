@@ -6,3 +6,8 @@
   font-size: 20px;
   border: 1px solid black;
 }
+
+.owner:hover {
+  cursor: pointer;
+  background-color: rgb(207, 207, 207);
+}

@@ -6,10 +6,16 @@ import { AppComponent } from './app.component';
 import { CertificateComponent } from './components/certificate/certificate.component';
 import { ListComponent } from './components/list/list.component';
 import { CertificateService } from './services/certificate.service';
+import { CertificateInfoComponent } from './components/certificate-info/certificate-info.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule],
-  declarations: [AppComponent, CertificateComponent, ListComponent],
+  declarations: [
+    AppComponent,
+    CertificateComponent,
+    ListComponent,
+    CertificateInfoComponent,
+  ],
   providers: [CertificateService],
   bootstrap: [AppComponent],
 })
