@@ -1,0 +1,8 @@
+<div
+  class="certificate-owners"
+  *ngIf="certificateList$ | async as certificateList"
+>
+  <div class="owner" *ngFor="let certificate of certificateList">
+    {{ certificate.commonName }}
+  </div>
+</div>

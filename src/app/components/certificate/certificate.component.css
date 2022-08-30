@@ -1,0 +1,9 @@
+#certificate {
+  border: 1px solid black;
+}
+
+#file {
+  opacity: 0;
+  padding: 15px;
+  height: 200px;
+}
