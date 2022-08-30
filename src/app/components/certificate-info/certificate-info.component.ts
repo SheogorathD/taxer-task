@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
+import { Certificate } from '../../models/certificate';
 
 @Component({
   selector: 'app-certificate-info',
   templateUrl: './certificate-info.component.html',
-  styleUrls: ['./certificate-info.component.css']
+  styleUrls: ['./certificate-info.component.css'],
 })
-export class CertificateInfoComponent implements OnInit {
+export class CertificateInfoComponent implements OnInit, OnChanges {
+  @Input() index: Certificate;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
   }
-
 }
