@@ -1,10 +1,5 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Certificate } from '../../models/certificate';
 
 @Component({
@@ -12,14 +7,8 @@ import { Certificate } from '../../models/certificate';
   templateUrl: './certificate-info.component.html',
   styleUrls: ['./certificate-info.component.css'],
 })
-export class CertificateInfoComponent implements OnInit, OnChanges {
-  @Input() index: Certificate;
-
-  constructor() {}
+export class CertificateInfoComponent implements OnInit {
+  @Input() certificate;
 
   ngOnInit() {}
-
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
-  }
 }

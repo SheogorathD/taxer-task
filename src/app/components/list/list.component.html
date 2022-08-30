@@ -5,7 +5,7 @@
   <div
     class="owner"
     *ngFor="let certificate of certificateList; let i = index"
-    (click)="onClick(i)"
+    (click)="getIndex(i)"
   >
     {{ certificate.commonName }}
   </div>

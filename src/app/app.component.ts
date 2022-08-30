@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { Observable } from 'rxjs';
 import { Certificate } from './models/certificate';
 import { CertificateService } from './services/certificate.service';
@@ -9,36 +14,33 @@ import { CertificateService } from './services/certificate.service';
   styleUrls: ['./app.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  @Input() index = 0;
+  otherCertificate = [];
+  certificateList$: Observable<Certificate[]>;
   certificateList = [];
   showOrAdd = true;
   certificateIndex = 0;
-  certificate = this.getCertificate(this.certificateIndex);
 
-  constructor(private readonly certificateService: CertificateService) {}
-
-  getCertificate(certificateIndex): Certificate {
-    const certificate = {
-      commonName: '',
-      issuerCN: '',
-      validFrom: '',
-      validTill: '',
-    };
-
-    this.certificateService.getCertificateList().subscribe((data) => {
-      this.certificateList = data;
-    });
-
-    certificate.commonName = this.certificateList[certificateIndex].commonName;
-    certificate.issuerCN = this.certificateList[certificateIndex].issuerCN;
-    certificate.validFrom = this.certificateList[certificateIndex].validFrom;
-    certificate.validTill = this.certificateList[certificateIndex].validTill;
-
-    return certificate;
+  getIndex(e) {
+    this.index = e;
+    this.otherCertificate = this.certificateService.getCertificate(e);
   }
 
   changeAppearance() {
     this.showOrAdd = !this.showOrAdd;
-    console.log(this.certificate);
+  }
+
+  constructor(private readonly certificateService: CertificateService) {}
+
+  findCertificate() {
+    this.certificateList$.subscribe((data) => {
+      this.certificateList = data;
+    });
+  }
+
+  ngOnInit(): void {
+    this.certificateList$ = this.certificateService.getCertificateList();
+    this.otherCertificate = this.certificateService.getCertificate(this.index);
   }
 }

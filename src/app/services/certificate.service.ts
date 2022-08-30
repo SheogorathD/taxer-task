@@ -14,21 +14,25 @@ export class CertificateService implements OnDestroy {
   }
 
   getCertificateList() {
-    console.log('get', this.changeSubject$.value);
     return this.changeSubject$.asObservable();
+  }
+
+  getCertificate(index: number) {
+    let certificateList = [];
+    this.changeSubject$.asObservable().subscribe((data) => {
+      certificateList = data;
+    });
+    return certificateList[index];
   }
 
   uploadCertificate(certificate: Certificate): void {
     const currentValue = this.changeSubject$.value;
-    console.log(currentValue);
     const updatedValue = [...currentValue, certificate];
-    console.log('updated', updatedValue);
     this.changeSubject$.next(updatedValue);
-    console.log('set', this.changeSubject$.value);
     localStorage.setItem(this.key, JSON.stringify(this.changeSubject$.value));
   }
 
   ngOnDestroy(): void {
-    console.log('destroy', this.changeSubject$.value);
+    this.changeSubject$.complete();
   }
 }
